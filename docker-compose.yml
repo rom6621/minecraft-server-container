@@ -1,16 +1,19 @@
-version: '3.9'
+version: "3.9"
 
 services:
   mc:
-    container_name: minecraft-server
-    build:
-      dockerfile: docker/mc/Dockerfile
-      context: .
+    image: itzg/minecraft-server
     ports:
-      - '25565:25565'
+      - "25565:25565"
+      - "25575:25575"
     volumes:
       - type: bind
         source: ./data
-        target: /server
-    working_dir: /server
-    command: java -jar papermc.jar
+        target: /data
+    environment:
+      EULA: "TRUE"
+      TYPE: "PAPER"
+      MAX_MEMORY: "4G"
+      ENABLE_RCON: "true"
+      RCON_PASSWORD: "test"
+      RCON_PORT: 25575
