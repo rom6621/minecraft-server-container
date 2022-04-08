@@ -18,5 +18,5 @@ services:
       ENABLE_RCON: "true"
       RCON_PASSWORD: "test"
       RCON_PORT: 25575
-    tty: true
     stdin_open: true
+    tty: true
