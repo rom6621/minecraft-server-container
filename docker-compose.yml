@@ -12,6 +12,7 @@ services:
         source: ./data
         target: /data
     environment:
+      TZ: Asia/Tokyo
       EULA: "TRUE"
       TYPE: "PAPER"
       MAX_MEMORY: "8G"
