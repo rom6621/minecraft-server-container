@@ -15,6 +15,7 @@ services:
       TZ: Asia/Tokyo
       EULA: "TRUE"
       TYPE: "PAPER"
+      VERSION: "1.9"
       MAX_MEMORY: "8G"
       ENABLE_RCON: "true"
       RCON_PASSWORD: "test"
