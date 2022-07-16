@@ -15,10 +15,29 @@ services:
       TZ: Asia/Tokyo
       EULA: "TRUE"
       TYPE: "PAPER"
-      VERSION: "1.9"
+      VERSION: "1.19"
       MAX_MEMORY: "8G"
       ENABLE_RCON: "true"
       RCON_PASSWORD: "test"
       RCON_PORT: 25575
     stdin_open: true
     tty: true
+  mc-backup:
+    container_name: mc-backup
+    image: itzg/mc-backup
+    depends_on:
+      - mc
+    environment:
+      TZ: Asia/Tokyo
+      RCON_HOST: mc
+      RCON_PASSWORD: "test"
+      BACKUP_METHOD: "rclone"
+      RCLONE_REMOTE: "googledrive"
+      RCLONE_DEST_DIR: "hebel/minecraft-backup"
+    volumes:
+      - type: bind
+        source: ./data
+        target: /data
+      - type: bind
+        source: ./rclone.conf
+        target: /config/rclone/rclone.conf
